@@ -38,7 +38,8 @@ jobs:
 
       # Executar o teste
       - name: Run a multi-line script
-        run: newman run servRest.postman_collection.json -e servRest_test.postman_environment.json -r htmlextra
+        run: |
+          newman run servRest.postman_collection.json -e servRest_test.postman_environment.json -r htmlextra
 
 
       # Salva o relatório na pasta Newman criada
