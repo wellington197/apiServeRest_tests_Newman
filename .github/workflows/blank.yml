@@ -33,7 +33,7 @@ jobs:
       # Instalar o Newman
       - name: Instalar o Newman
         run: |
-          mpm install -g newman
+          npm install -g newman
           npm install -g newman-reporter-htmlextra
 
       # Executar o teste
