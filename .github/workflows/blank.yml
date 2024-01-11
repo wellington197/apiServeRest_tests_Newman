@@ -30,6 +30,12 @@ jobs:
         run: |
           mkdir testArtifacts
 
+      - name: Configurar o Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 14
+
+
       # Instalar o Newman
       - name: Instalar o Newman
         run: |
