@@ -7,48 +7,31 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  
-  # This workflow contains a single job called "build"
   newman:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3 
-
-      - name: Create dir for report
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+          
+      - name: Create directory for report
         run: |
           mkdir testArtifacts
 
-      - name: Configurar o Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 16
-
-
-      # Instalar o Newman
-      - name: Instalar o Newman
+      - name: Install Newman
         run: |
           npm install -g newman
           npm install -g newman-reporter-htmlextra
 
-      # Executar o teste
-      - name: Run Test
-        run: newman run servRest.postman_collection.json -e servRest_test.postman_environment.json -r htmlextra --reporter-htmlextra-export ./exports_reports/relatorio.html --reporter-htmlextra-title "Relatório API ServRest CI/CD" --reporter-htmlextra-titleSize 78 
+      - name: Run Newman
+        run: |
+          newman run servRest.postman_collection.json -e servRest_test.postman_environment.json -r htmlextra --reporter-htmlextra-export ./exports_reports/relatorio.html --reporter-htmlextra-title "Relatório API ServRest CI/CD" --reporter-htmlextra-titleSize 78
 
-      # Salva o relatório na pasta Newman criada
-      - name: Criando Relatório
+      - name: Upload Reports
         uses: actions/upload-artifact@v3.1.2
         with:
           name: Reports
-          path: Newman
+          path: testArtifacts
