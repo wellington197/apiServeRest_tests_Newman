@@ -39,8 +39,7 @@ jobs:
       # Executar o teste
       - name: Run a multi-line script
         run: |
-          newman run servRest.postman_collection.json -e servRest_test.postman_environment.json -r htmlextra
-
+          newman run servRest.postman_collection.json -e servRest_test.postman_environment.json -r htmlextra --reporter-htmlextra-export ./exports_reports/relatorio.html --reporter-htmlextra-title "Relatório API ServRest CI/CD" --reporter-htmlextra-titleSize 78 
 
       # Salva o relatório na pasta Newman criada
       - name: Criando Relatório
