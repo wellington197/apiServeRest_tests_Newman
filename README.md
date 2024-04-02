@@ -50,6 +50,13 @@ newman run servRest.postman_collection.json -e servRest_test.postman_environment
 ```
 newman run servRest.postman_collection.json -e servRest_test.postman_environment.json -r htmlextra
 ```
+- Ou comando personalizado com alteração de título e tamanho da fonte
+
+```
+newman run servRest.postman_collection.json -e servRest_test.postman_environment.json -r htmlextra --reporter-htmlextra-export ./exports_reports/Relatório_ServRest.html --reporter-htmlextra-title "Relatório API_Serv_Rest_Automation" --reporter-htmlextra-titleSize 7 --reporter-htmlextra-showEnvironmentData
+```
+
+
 <img src="https://github.com/wellington197/apiServeRest_tests_Newman/assets/98292924/5184af62-7a3b-445d-9c24-954732283af5" width="500" height="500">
 
 
@@ -64,3 +71,5 @@ Ao rodar os testes com htmlextra, será gerado arquivo em html com o resultado d
 ## Entre em contato
 
 email: fco.learning@gmail.com
+
+
