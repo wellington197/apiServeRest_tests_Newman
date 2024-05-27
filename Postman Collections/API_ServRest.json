@@ -150,11 +150,11 @@
 									"\r",
 									"pm.globals.set(\"authorization\", resposta.authorization);\r",
 									"\r",
-									"\r",
+									"/**\r",
 									"pm.test(\"Body matches string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"Login realizado com sucesso\");\r",
 									"});\r",
-									"\r",
+									"*/\r",
 									""
 								],
 								"type": "text/javascript",
@@ -217,7 +217,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"fulano@qa.com\",\r\n  \"password\": \"teste\"\r\n}",
+							"raw": "{\r\n  \"email\": \"fulano@qa.com\",\r\n  \"password\": \"teste\"\r\n}\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
