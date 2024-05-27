@@ -307,6 +307,37 @@
 							"body": "{\n    \"message\": \"Login realizado com sucesso\",\n    \"authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNjg0NjcxNzE0LCJleHAiOjE2ODQ2NzIzMTR9.Z0Wfy-W9BgIzR2cxbEolw9IvPKgJCo_5IfIMt51u5Dc\"\n}"
 						}
 					]
+				},
+				{
+					"name": "New Request",
+					"id": "2cb8a89e-5024-4042-b772-fcc7fd86e245",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"fulano@qa.com\",\n  \"password\": \"teste\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://serverest.dev/login"
+					},
+					"response": []
 				}
 			],
 			"id": "c459974e-17d8-4c82-a3d2-bdff6c434399"
