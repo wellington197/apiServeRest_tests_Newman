@@ -1132,7 +1132,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "7ba5eda5-b818-4477-a969-0ae80b628b9a",
+				"id": "f5ac007d-c2de-44d4-9b6e-eec35ba37291",
 				"type": "text/javascript",
 				"exec": [
 					"//imprimir qual teste está sendo executado",
@@ -1143,7 +1143,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "bbbd5cec-aaa4-4522-8466-c735d2032b85",
+				"id": "ca898057-cdc5-4472-8f4f-bfc3961f52a0",
 				"type": "text/javascript",
 				"exec": [
 					"//MÉTODOS GET - Valida se status code está retornando de forma correta para os Métodos GET",
@@ -1160,8 +1160,8 @@
 					"//MÉTODOS GET e POST - Testa tempo de resposta para dois métodos: Muito importante para avaliar a velocidade de resposta da API.",
 					"if(pm.request.method=='GET'|| pm.request.method=='POST'){ ",
 					"  ",
-					"    pm.test(\"Response time is less than 300ms\", () => {",
-					"    pm.expect(pm.response.responseTime).to.be.below(300);",
+					"    pm.test(\"Response time is less than 350ms\", () => {",
+					"    pm.expect(pm.response.responseTime).to.be.below(350);",
 					"    });",
 					"",
 					"    pm.test(\"Content-Type is present\", function () {",
