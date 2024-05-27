@@ -533,6 +533,177 @@
 					]
 				},
 				{
+					"name": "Realizar Login com novo Usuário",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fe77125e-5ebc-4af3-ba49-b47ece8a9c8e",
+								"exec": [
+									"// Buscando a resposta do Jason para autenticar o token\r",
+									"const resposta=pm.response.json();\r",
+									"\r",
+									"pm.globals.set(\"authorization\", resposta.authorization);\r",
+									"\r",
+									"/**\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Login realizado com sucesso\");\r",
+									"});\r",
+									"*/\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "855f4c67-0172-4efd-b5f3-ebebe5d9c8e0",
+								"exec": [
+									"/**Limpar a variável global sempre antes de usar\r",
+									" * No caso a varíável \"schema\"\r",
+									" */\r",
+									"\r",
+									"pm.globals.unset(\"schema\");\r",
+									"\r",
+									"\r",
+									"/**Depois já crio a variável \"schema\" como global \r",
+									" * Assim ela sempre é limpada antes de cria uma nova\r",
+									" */\r",
+									"\r",
+									"pm.globals.set(\"schema\", {\r",
+									"    \"$schema\": \"https://json-schema.org/draft/2019-09/schema\",\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"default\": {},\r",
+									"    \"title\": \"Root Schema\",\r",
+									"    \"required\": [\r",
+									"        \"message\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"message\": {\r",
+									"            \"type\": \"string\",\r",
+									"            \"default\": \"\",\r",
+									"            \"title\": \"The message Schema\",\r",
+									"            \"examples\": [\r",
+									"                \"Registro excluído com sucesso | Nenhum registro excluído\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"examples\": [{\r",
+									"        \"message\": \"Registro excluído com sucesso | Nenhum registro excluído\"\r",
+									"    }]\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "3fb4d147-210c-46df-85e0-3d4af6ae8595",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"fulano@qa.com\",\r\n  \"password\": \"teste\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/login",
+						"description": "Realizar login com e-mail e senha VÁLIDO.\n\nStartFragment\n\nResultados esperados:\n\n\\- Response code 200\n\n\\- String \"Login realizado com sucesso\" no corpo do response\n\n\\- Tempo de resposta < 2000ms\n\n  \n\nEndFragment"
+					},
+					"response": [
+						{
+							"id": "b0a87d25-29d1-46ed-a9c1-b13e5437a4cc",
+							"name": "Realizar Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"fulano@qa.com\",\r\n  \"password\": \"teste\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url_base}}/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "x-dns-prefetch-control",
+									"value": "off"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "x-download-options",
+									"value": "noopen"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-moesif-transaction-id",
+									"value": "4ca3da88-9cbf-4f8e-aeaa-7ef3c8b3f75f"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "5b4a310decc240ae6503837c21c7cb30;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 May 2023 12:21:54 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Content-Length",
+									"value": "265"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Login realizado com sucesso\",\n    \"authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNjg0NjcxNzE0LCJleHAiOjE2ODQ2NzIzMTR9.Z0Wfy-W9BgIzR2cxbEolw9IvPKgJCo_5IfIMt51u5Dc\"\n}"
+						}
+					]
+				},
+				{
 					"name": "buscar usuário pelo id",
 					"event": [
 						{
