@@ -18,9 +18,7 @@ jobs:
     - name: Install Newman and HTML Extra Reporter
       run: npm install -g newman newman-reporter-htmlextra
 
-    - name: Create report directory
-      run: mkdir -p ./relatórios
-
+    
     - name: Debug information
       run: |
         echo "Node.js version:"
