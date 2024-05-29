@@ -1,3 +1,5 @@
+[![Badge ServeRest](https://img.shields.io/badge/API-ServeRest-green)](https://github.com/ServeRest/ServeRest/)
+
 # Automação de testes de API com Postman e criação de Pipeline
 Esta é a collection de testes da API de ServeRest do site https://serverest.dev/ utilizando o postman e Newman e subindo CI
 
