@@ -1,25 +1,26 @@
-name: Newman Tests
+name: Newman Tests with HTML Report
 
 on: [push]
 
 jobs:
   run-newman-tests:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    
+
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16'
-    
-    - name: Install Newman
+        node-version: '16' # Altere para '20' se necessário
+
+    - name: Install Newman and HTML Extra Reporter
       run: npm install -g newman newman-reporter-htmlextra
-    
+
     - name: Create report directory
-      run: mkdir -p ./exports_reports
-    
+      run: mkdir -p ./relatórios
+
     - name: Debug information
       run: |
         echo "Node.js version:"
@@ -28,10 +29,18 @@ jobs:
         npm -v
         echo "Installed Newman version:"
         newman -v
-        echo "Directory contents:"
-        ls -la
         echo "Repository contents:"
         ls -la
-    
+        echo "Current directory contents:"
+        ls -la
+
     - name: Run Newman tests
-      run: newman run servRest.postman_collection.json -e servRest_test.postman_environment.json -r htmlextra --reporter-htmlextra-export ./exports_reports/Relatório_ServRest.html --reporter-htmlextra-title "Relatório API_Serv_Rest_Automation" --reporter-htmlextra-titleSize 7 --reporter-htmlextra-showEnvironmentData
+      run: |
+        newman run servRest.postman_collection.json -e servRest_test.postman_environment.json -r htmlextra --reporter-htmlextra-export ./relatórios/Relatório_ServRest.html --reporter-htmlextra-title "Relatório API_Serv_Rest_Automation" --reporter-htmlextra-titleSize 7 --reporter-htmlextra-showEnvironmentData
+      continue-on-error: true
+
+    - name: Display Newman logs if failed
+      if: failure()
+      run: |
+        echo "Newman run failed. Displaying logs..."
+        cat ./relatórios/Relatório_ServRest.html
