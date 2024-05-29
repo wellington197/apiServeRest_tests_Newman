@@ -13,7 +13,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16' # Altere para '20' se necessário
+        node-version: '20' # Altere para '20' se necessário
 
     - name: Install Newman and HTML Extra Reporter
       run: npm install -g newman newman-reporter-htmlextra
