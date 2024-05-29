@@ -13,13 +13,15 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '20' # Altere para '20' se necessário
+        node-version: '16' # Altere para '20' se necessário
 
     - name: Install Newman and HTML Extra Reporter
       run: npm install -g newman newman-reporter-htmlextra
 
-    
-    - name: Debug information
+    - name: Create report directory
+      run: mkdir -p ./relatórios
+
+    - name: Debug information before Newman run
       run: |
         echo "Node.js version:"
         node -v
@@ -36,6 +38,11 @@ jobs:
       run: |
         newman run servRest.postman_collection.json -e servRest_test.postman_environment.json -r htmlextra --reporter-htmlextra-export ./relatórios/Relatório_ServRest.html --reporter-htmlextra-title "Relatório API_Serv_Rest_Automation" --reporter-htmlextra-titleSize 7 --reporter-htmlextra-showEnvironmentData
       continue-on-error: true
+
+    - name: Debug information after Newman run
+      run: |
+        echo "Contents of relatórios directory:"
+        ls -la ./relatórios
 
     - name: Display Newman logs if failed
       if: failure()
