@@ -1,34 +1,37 @@
-name: Newman Run
-on:
-  push:
-    branches:
-      - main
+name: Newman Tests
+
+on: [push]
+
 jobs:
-  newman:
+  run-newman-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      
-      - name: Create directory
-        run: |
-          mkdir testArtifacts
-
-      # Configurando o ambiente
-      - name: Use Node.js 20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          
-      - name: Install Newman
-        run: |
-          npm install -g newman
-          npm install -g newman-reporter-htmlextra
-          
-      - name: Run Test
-        run: newman run servRest.postman_collection.json -e servRest_test.postman_environment.json -r htmlextra --reporter-htmlextra-export ./exports_reports/Relatório_ServRest.html --reporter-htmlextra-title "Relatório API_Serv_Rest_Automation" --reporter-htmlextra-titleSize 7 --reporter-htmlextra-showEnvironmentData
-      - name: Upload Reports
-        uses: actions/upload-artifact@v3
-        with:
-          name: Reports
-          path: newman
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    
+    - name: Install Newman
+      run: npm install -g newman newman-reporter-htmlextra
+    
+    - name: Create report directory
+      run: mkdir -p ./exports_reports
+    
+    - name: Debug information
+      run: |
+        echo "Node.js version:"
+        node -v
+        echo "NPM version:"
+        npm -v
+        echo "Installed Newman version:"
+        newman -v
+        echo "Directory contents:"
+        ls -la
+        echo "Repository contents:"
+        ls -la
+    
+    - name: Run Newman tests
+      run: newman run servRest.postman_collection.json -e servRest_test.postman_environment.json -r htmlextra --reporter-htmlextra-export ./exports_reports/Relatório_ServRest.html --reporter-htmlextra-title "Relatório API_Serv_Rest_Automation" --reporter-htmlextra-titleSize 7 --reporter-htmlextra-showEnvironmentData
