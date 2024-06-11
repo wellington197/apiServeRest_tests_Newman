@@ -17,7 +17,7 @@
 							"script": {
 								"id": "d674f99d-c862-4f61-8150-f1ea17fd932e",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.test(\"Status code é 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
@@ -33,7 +33,8 @@
 									"/** Setar em uma variável global a Senha do usuário da API */\r",
 									"pm.globals.set(\"userPassword\", pm.response.json().results[0].login.password);"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
