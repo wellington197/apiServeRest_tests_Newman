@@ -1,9 +1,11 @@
 [![Badge ServeRest](https://img.shields.io/badge/API-ServeRest-green)](https://github.com/ServeRest/ServeRest/)
 
 # Automação de testes de API com Postman e criação de Pipeline
-Esta é a collection de testes da API de ServeRest do site https://serverest.dev/ utilizando o postman e Newman e subindo CI
 
 ## O que é?
+Esta é a collection de testes da API de ServeRest do site https://serverest.dev/ utilizando o postman e Newman. Com geração de relatório de forma automática via Git Actions, em uma pasta de relatórios de forma automática.
+
+Também está sendo gerado a automação via Azure DevOps, para geração do relatório em uma Pipeline.
 
 ## Tecnologias
 - Postman versão web
@@ -13,8 +15,8 @@ Esta é a collection de testes da API de ServeRest do site https://serverest.dev
 - Git actions
 
 ## Documentações
-- Análise Técnica: Analise/
-- Doc da API: [Consultar Swagger da API serverRest](https://serverest.dev/)
+- Análise Técnica: Analise Via Swagger da API
+- Doc da API com Swagger: [Consultar Swagger da API serverRest](https://serverest.dev/)
 
 
 ## Como instalar o ambiente
