@@ -74,6 +74,6 @@ Ao rodar os testes com htmlextra, será gerado arquivo em html com o resultado d
 
 ## Entre em contato
 
-email: fco.learning@gmail.com
+email: 
 
 
