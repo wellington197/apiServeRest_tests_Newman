@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "9ccf2f2e-9650-4318-b222-b7c96ca87953",
 		"name": "ServRest_API",
-		"description": "Esta é a collection de testes da API de ServeRest do site [https://serverest.dev/](https://serverest.dev/).\n\nAPI gratuita de testes gratuita que **simula uma loja virtual com intuito de servir de material de estudos de testes de API.**\n\n**Nesses testes irão validar alguns tópicos importantes sobre a API.**\n\n1. Testes de acesso via Token.\n    \n2. Testes de respostas e Velocidade da API.\n    \n3. Requisições via GET,PUT,DELETE e PUT.\n    \n4. Documentação.\n    \n5. Automação comk Newman.\n    \n6. Integração.\n    \n7. CI/CD via Azure DevOps.",
+		"description": "Esta é a collection de testes da API de ServeRest do site [https://serverest.dev/](https://serverest.dev/).  \n\nAPI gratuita de testes gratuita que **simula uma loja virtual com intuito de servir de material de estudos de testes de API.  \n**\n\n**Oferece uma consulta Backend para serviço da API da loja do site.  \n**\n\n**Nesses testes irão validar alguns tópicos importantes sobre a API.**\n\n1. Testes de acesso via Token.\n    \n2. Testes de respostas e Velocidade da API.\n    \n3. Requisições via GET,PUT,DELETE e PUT.\n    \n4. Documentação.\n    \n5. Automação comk Newman.\n    \n6. Integração.\n    \n7. CI/CD via Azure DevOps.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
